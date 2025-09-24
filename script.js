@@ -11,25 +11,27 @@ let mousePressionado = false;
 document.addEventListener("mousedown", () => (mousePressionado = true));
 document.addEventListener("mouseup", () => (mousePressionado = false));
 
-// TOUCHSTART (já funciona)
+// TOUCH PARA MOBILE REAL
 container.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    const touch = e.touches[0];
+    const touch = e.targetTouches[0];
     const cell = document.elementFromPoint(touch.clientX, touch.clientY);
     if (cell && cell.classList.contains('cell')) {
         paintCell(cell);
     }
 });
 
-// TOUCHMOVE (adicione para arraste)
 container.addEventListener('touchmove', (e) => {
     e.preventDefault();
-    const touch = e.touches[0];
+    const touch = e.targetTouches[0];
     const cell = document.elementFromPoint(touch.clientX, touch.clientY);
     if (cell && cell.classList.contains('cell')) {
         paintCell(cell);
     }
 });
+
+// CSS IMPORTANTE para mobile
+container.style.touchAction = 'none';
 
 // FUNÇÃO DE PINTAR touch
 function paintCell(cell) {
