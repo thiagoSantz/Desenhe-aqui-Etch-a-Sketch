@@ -83,3 +83,12 @@ resetBtn.addEventListener("click", () => {
   const novoSize = Math.min(100, parseInt(gridInput.value) || 16);
   criarGrid(novoSize);
 });
+
+// PREVENÇÃO MOBILE - coloque no final do arquivo
+if ('ontouchstart' in window) {
+    document.addEventListener('touchstart', (e) => {
+        if (e.target.closest('#container')) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+}
