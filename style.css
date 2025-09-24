@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* ← alinha no topo */
+
+  background-color: rgb(41, 41, 47);
+  margin: 0;
+  min-height: 100vh;
+  padding-top: 10px; /* ← espaço opcional no topo */
+
+  overflow: hidden;
+}
+
+.contTitulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.titulo {
+  font-family: "Fleur De Leah", cursive;
+  font-size: 40px;
+  font-weight: 400;
+  color: #b6b2c4;
+
+  padding-right: 50px;
+}
+
+.controls {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+#gridSizeInput {
+  padding: 8px 12px;
+  border: 2px solid #7b5ff9;
+  background-color: rgb(200, 197, 197);
+  border-radius: 5px;
+  font-size: 16px;
+  width: 40px;
+}
+
+#resetBtn {
+  padding: 8px 16px;
+  background-color: #5b5188;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#resetBtn:hover {
+  background-color: #9a89e3;
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 90vw; /* 90% da largura da tela */
+  height: 75vh;
+  max-width: 700px;
+  max-height: 500px;
+}
+
+.cell {
+  box-sizing: border-box;
+  border: 1px solid #5a5a5a6a;
+}
+
+.cell:hover {
+  background-color: rgb(157, 157, 162); /* ou qualquer cor */
+}
+
+/* Para mobile */
+@media (max-width: 768px) {
+  #container {
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .cell {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  .controls {
+    flex-direction: column; /* botão embaixo do input */
+    align-items: center;
+  }
+}
