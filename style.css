@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap");
 
 :root {
-    --cor-pintura: rgb(157, 157, 162);
+  --cor-pintura: rgb(157, 157, 162);
 }
 
 body {
@@ -85,14 +85,14 @@ body {
 }
 
 .cell:hover {
-   background-color: var(--cor-pintura);
+  background-color: var(--cor-pintura);
 }
 
 /* Para mobile */
 @media (max-width: 768px) {
   #container {
     width: 80vw;
-    height: 70vh;
+    height: 75vh;
     max-width: 700px;
     max-height: 600px;
   }
@@ -100,6 +100,10 @@ body {
   .controls {
     flex-direction: column; /* botão embaixo do input */
     align-items: center;
+  }
+
+  #gridSizeInput {
+    max: 32; /* limita input no mobile */
   }
 }
 
@@ -110,5 +114,4 @@ body {
     user-select: none;
     -webkit-touch-callout: none;
   }
-
 }
