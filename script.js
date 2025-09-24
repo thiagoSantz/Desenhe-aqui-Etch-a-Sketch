@@ -11,10 +11,9 @@ let mousePressionado = false;
 document.addEventListener("mousedown", () => (mousePressionado = true));
 document.addEventListener("mouseup", () => (mousePressionado = false));
 
-// FUNÇÃO PINTAR
+// FUNÇÃO PINTAR - VERSÃO TESTE
 function paintCell(cell) {
-  const estilo = window.getComputedStyle(cell);
-  cell.style.backgroundColor = estilo.getPropertyValue("background-color");
+  cell.style.backgroundColor = "var(--cor-pintura)";
 }
 
 /*--------------------------------------------------------*/
@@ -51,21 +50,27 @@ function criarGrid(gridSize) {
     container.appendChild(cell);
   }
 
-  // TOUCH 
+  // TOUCH - CORRIGIDO
   container.addEventListener("touchstart", (e) => {
     e.preventDefault();
+
     const touch = e.touches[0];
-    const cell = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (cell && cell.classList.contains("cell")) {
+    const elemento = document.elementFromPoint(touch.clientX, touch.clientY);
+    const cell = elemento?.closest(".cell");
+
+    if (cell) {
       paintCell(cell);
     }
   });
 
   container.addEventListener("touchmove", (e) => {
     e.preventDefault();
+
     const touch = e.touches[0];
-    const cell = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (cell && cell.classList.contains("cell")) {
+    const elemento = document.elementFromPoint(touch.clientX, touch.clientY);
+    const cell = elemento?.closest(".cell");
+
+    if (cell) {
       paintCell(cell);
     }
   });
@@ -77,6 +82,6 @@ function criarGrid(gridSize) {
 criarGrid(parseInt(gridInput.value) || 16);
 
 resetBtn.addEventListener("click", () => {
-    const novoSize = Math.min(100, parseInt(gridInput.value) || 16);
-    criarGrid(novoSize);
+  const novoSize = Math.min(100, parseInt(gridInput.value) || 16);
+  criarGrid(novoSize);
 });
