@@ -11,29 +11,7 @@ let mousePressionado = false;
 document.addEventListener("mousedown", () => (mousePressionado = true));
 document.addEventListener("mouseup", () => (mousePressionado = false));
 
-// TOUCH PARA MOBILE REAL
-container.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    const touch = e.targetTouches[0];
-    const cell = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (cell && cell.classList.contains('cell')) {
-        paintCell(cell);
-    }
-});
-
-container.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-    const touch = e.targetTouches[0];
-    const cell = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (cell && cell.classList.contains('cell')) {
-        paintCell(cell);
-    }
-});
-
-// CSS IMPORTANTE para mobile
-container.style.touchAction = 'none';
-
-// FUNÇÃO DE PINTAR touch
+// FUNÇÃO PINTAR
 function paintCell(cell) {
   const estilo = window.getComputedStyle(cell);
   cell.style.backgroundColor = estilo.getPropertyValue("background-color");
@@ -59,10 +37,11 @@ function criarGrid(gridSize) {
   for (let i = 0; i < gridSize * linhasQueCabem; i++) {
     const cell = document.createElement("div");
     cell.className = "cell";
+
     cell.style.width = `${cellWidth}px`;
     cell.style.height = `${cellHeight}px`;
 
-    // EVENTOS (alterados para usar paintCell):
+    // Eventos mouse
     cell.addEventListener("mouseover", () => {
       if (mousePressionado) paintCell(cell);
     });
@@ -71,24 +50,33 @@ function criarGrid(gridSize) {
 
     container.appendChild(cell);
   }
+
+  // TOUCH 
+  container.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const cell = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (cell && cell.classList.contains("cell")) {
+      paintCell(cell);
+    }
+  });
+
+  container.addEventListener("touchmove", (e) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    const cell = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (cell && cell.classList.contains("cell")) {
+      paintCell(cell);
+    }
+  });
 }
 
 /*--------------------------------------------------------*/
 
-// Criar grid inicial
+// INICIALIZAR
 criarGrid(parseInt(gridInput.value) || 16);
 
-// Botão para novo grid
 resetBtn.addEventListener("click", () => {
-  const novoSize = Math.min(100, parseInt(gridInput.value) || 16);
-  criarGrid(novoSize);
+    const novoSize = Math.min(100, parseInt(gridInput.value) || 16);
+    criarGrid(novoSize);
 });
-
-// PREVENÇÃO MOBILE - coloque no final do arquivo
-if ('ontouchstart' in window) {
-    document.addEventListener('touchstart', (e) => {
-        if (e.target.closest('#container')) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-}
