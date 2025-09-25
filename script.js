@@ -84,10 +84,10 @@ criarGrid(parseInt(gridInput.value) || 16);
 resetBtn.addEventListener("click", () => {
     let valor = parseInt(gridInput.value);
     
-    // LIMITES GERAIS - NOVO
-    if (valor < 16) valor = 16;   // Mínimo sempre 16
-    if (valor > 160) valor = 80; // Máximo sempre 160
+    // VALIDAÇÃO REAL - NOVO
+    if (isNaN(valor)) valor = 16; // se não for número
+    valor = Math.max(16, Math.min(80, valor)); // força entre 16-80
     
-    gridInput.value = valor; // Corrige o input
+    gridInput.value = valor; // atualiza o input
     criarGrid(valor);
 });
