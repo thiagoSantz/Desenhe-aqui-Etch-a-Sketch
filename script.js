@@ -81,6 +81,7 @@ function criarGrid(gridSize) {
 // INICIALIZAR
 criarGrid(parseInt(gridInput.value) || 16);
 
+//ResetButton
 resetBtn.addEventListener("click", () => {
     let valor = parseInt(gridInput.value);
     

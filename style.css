@@ -93,6 +93,7 @@ body {
   #container {
     width: 80vw;
     height: 70vh;
+    
     max-width: 700px;
     max-height: 600px;
   }
