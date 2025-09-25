@@ -82,6 +82,12 @@ function criarGrid(gridSize) {
 criarGrid(parseInt(gridInput.value) || 16);
 
 resetBtn.addEventListener("click", () => {
-  const novoSize = Math.min(100, parseInt(gridInput.value) || 16);
-  criarGrid(novoSize);
+    let valor = parseInt(gridInput.value);
+    
+    // LIMITES GERAIS - NOVO
+    if (valor < 16) valor = 16;   // Mínimo sempre 16
+    if (valor > 160) valor = 80; // Máximo sempre 160
+    
+    gridInput.value = valor; // Corrige o input
+    criarGrid(valor);
 });

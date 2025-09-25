@@ -92,7 +92,7 @@ body {
 @media (max-width: 768px) {
   #container {
     width: 80vw;
-    height: 75vh;
+    height: 70vh;
     max-width: 700px;
     max-height: 600px;
   }
@@ -102,9 +102,6 @@ body {
     align-items: center;
   }
 
-  #gridSizeInput {
-    max: 32; /* limita input no mobile */
-  }
 }
 
 /* SÓ MOBILE */
