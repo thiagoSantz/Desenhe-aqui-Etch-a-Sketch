@@ -9,6 +9,7 @@ const gridPreset = document.getElementById("gridPreset");
 const presetValues = [16, 32, 48, 64, 80]; // valores para o gridPreset
 //lida com o colorPicker
 const colorPicker = document.getElementById("colorPicker");
+
 // Array com 8 cores primárias iniciais
 let colorHistory = [
     '#FF0000', // vermelho
