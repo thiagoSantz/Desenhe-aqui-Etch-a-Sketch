@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
   padding-top: 10px; /* ← espaço opcional no topo */
 
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .contTitulo {
@@ -72,7 +72,7 @@ body {
   max-width: 700px;
   max-height: 500px;
 
-  touch-action: none; /* já tem no mobile, colocar sempre */
+  touch-action: none; /* ← só bloqueia no grid */
 }
 
 .cell {

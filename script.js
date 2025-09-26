@@ -11,13 +11,13 @@ const presetValues = [16, 32, 48, 64, 80]; // valores para o gridPreset
 const colorPicker = document.getElementById("colorPicker");
 // Array com 8 cores primárias iniciais
 let colorHistory = [
-    '#FF0000', // vermelho
-    '#00FF00', // verde  
-    '#0000FF', // azul
-    '#FFFF00', // amarelo
+    '#ff2020ff', // vermelho
+    '#1ffb1fff', // verde  
+    '#2d56feff', // azul
+    '#ffd725ff', // amarelo
     '#FF00FF', // magenta
     '#00FFFF', // ciano
-    '#FFA500', // laranja
+    '#ff6a00ff', // laranja
     '#9D9DA2'  // cinza (cor padrão)
 ]
 
