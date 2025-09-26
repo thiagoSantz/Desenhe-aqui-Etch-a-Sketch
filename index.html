@@ -3,19 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Desenhe aqui..</title>
+    <title>Lousazinha</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
     <div class="contTitulo">
-      <div class="titulo">Desenhe aqui:</div>
+      <div class="titulo">Lousazinha</div>
       <div class="controls">
         <button id="resetBtn">Novo Grid</button>
-        <input type="number" id="gridSizeInput" min="16" max="80" value="48">
-
+        <div class="preset-slider">
+          <span>16</span>
+          <input
+            type="range"
+            id="gridPreset"
+            min="0"
+            max="4"
+            value="2"
+            step="1"
+          />
+          <span>80</span>
+        </div>
       </div>
     </div>
-    <div id="container"></div>
+    <div class="tela">
+      <div id="container"></div>
+      <div class="color-controls">
+        <div class="caixa-colorPicker">
+          <label></label>
+          <input type="color" id="colorPicker" value="#9D9DA2" />
+        </div>
+        <div class="recent-colors">
+          <div class="color-history-container"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

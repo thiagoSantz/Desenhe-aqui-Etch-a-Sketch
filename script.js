@@ -1,38 +1,113 @@
+//#region Inicialização
+
 //lida com o o div de id container
 const container = document.getElementById("container");
-//lida com o botão de id resetBtn
+//lida com o botão de id resetBtn 
 const resetBtn = document.getElementById("resetBtn");
-//lida com a variável gridSizeInput
-const gridInput = document.getElementById("gridSizeInput");
+//lida com a variável id gridPreset (Slider)
+const gridPreset = document.getElementById("gridPreset");
+const presetValues = [16, 32, 48, 64, 80]; // valores para o gridPreset
+//lida com o colorPicker
+const colorPicker = document.getElementById("colorPicker");
+// Array com 8 cores primárias iniciais
+let colorHistory = [
+    '#FF0000', // vermelho
+    '#00FF00', // verde  
+    '#0000FF', // azul
+    '#FFFF00', // amarelo
+    '#FF00FF', // magenta
+    '#00FFFF', // ciano
+    '#FFA500', // laranja
+    '#9D9DA2'  // cinza (cor padrão)
+]
 
-// MOUSE presionado começa como não
+// Atualiza a palette quando cor é escolhida
+colorPicker.addEventListener("change", () => {
+    addToHistory(colorPicker.value);
+});
+
+// Evento do slider
+gridPreset.addEventListener("input", () => {
+  const valor = presetValues[gridPreset.value];
+  criarGrid(valor);
+});
+
+// Eventos de mouse
 let mousePressionado = false;
 //lida com os eventos de mousepressionado e mouse solto
 document.addEventListener("mousedown", () => (mousePressionado = true));
 document.addEventListener("mouseup", () => (mousePressionado = false));
 
-// FUNÇÃO PINTAR - VERSÃO TESTE
+// Evento do Botão de reinicio
+resetBtn.addEventListener("click", () => {
+  // Recria grid com o valor atual do slider
+  const valorAtual = presetValues[gridPreset.value];
+  criarGrid(valorAtual);
+});
+
+// FUNÇÃO PINTAR
 function paintCell(cell) {
-  cell.style.backgroundColor = "var(--cor-pintura)";
+    cell.style.backgroundColor = colorPicker.value;
 }
 
+// Adiciona cor ao histórico (COMPORTAMENTO CORRETO)
+function addToHistory(newColor) {
+    console.log("📥 Adicionando cor:", newColor);
+    console.log("📊 Histórico ANTES:", colorHistory);
+    
+    colorHistory = colorHistory.filter(color => color !== newColor);
+    colorHistory.unshift(newColor);
+    
+    if (colorHistory.length > 8) {
+        colorHistory = colorHistory.slice(0, 8);
+    }
+    
+    console.log("📤 Histórico DEPOIS:", colorHistory);
+    updateColorHistory();
+}
+//#endregion
+
 /*--------------------------------------------------------*/
+// Atualiza a exibição (JS CORRETO - HTML e CSS do anterior)
+function updateColorHistory() {
+    console.log("🎨 Atualizando exibição do histórico");
+    const historyContainer = document.querySelector('.color-history-container');
+    console.log("📦 Container encontrado:", historyContainer);
+    
+    historyContainer.innerHTML = '';
+    
+    colorHistory.forEach((color, index) => {
+        console.log(`🟣 Criando item ${index}: ${color}`);
+        const colorDiv = document.createElement('div');
+        colorDiv.className = 'color-history-item';
+        colorDiv.style.backgroundColor = color;
+        colorDiv.title = color;
+        colorDiv.addEventListener('click', () => {
+            colorPicker.value = color;
+        });
+        historyContainer.appendChild(colorDiv);
+    });
+    
+    console.log("✅ Itens criados:", historyContainer.children.length);
+}
 
 function criarGrid(gridSize) {
   container.innerHTML = ""; // Limpa o grid anterior
 
+  // Calculos para caber as celulas
   const containerWidth = container.offsetWidth;
   const containerHeight = container.offsetHeight;
 
   const cellWidth = containerWidth / gridSize;
   const cellHeight = containerHeight / gridSize;
 
-  // Calcula quantas linhas cabem realmente
-  const linhasQueCabem = Math.floor(containerHeight / cellHeight);
+  // Calcula quantas linhas cabem realmente no container
+  // Calcula com margem de erro para bordas
+const linhasQueCabem = Math.floor((containerHeight - 2) / cellHeight);
 
   /*------------------------------------------------------*/
 
-  //cria o grid
+  // Loop para criar o grid
   for (let i = 0; i < gridSize * linhasQueCabem; i++) {
     const cell = document.createElement("div");
     cell.className = "cell";
@@ -44,13 +119,12 @@ function criarGrid(gridSize) {
     cell.addEventListener("mouseover", () => {
       if (mousePressionado) paintCell(cell);
     });
-
     cell.addEventListener("mousedown", () => paintCell(cell));
 
     container.appendChild(cell);
   }
 
-  // TOUCH - CORRIGIDO
+  // Evento de Touch start
   container.addEventListener("touchstart", (e) => {
     e.preventDefault();
 
@@ -63,6 +137,7 @@ function criarGrid(gridSize) {
     }
   });
 
+  // Evento de Touch pressionado
   container.addEventListener("touchmove", (e) => {
     e.preventDefault();
 
@@ -78,17 +153,7 @@ function criarGrid(gridSize) {
 
 /*--------------------------------------------------------*/
 
-// INICIALIZAR
-criarGrid(parseInt(gridInput.value) || 16);
+criarGrid(presetValues[2]); // Inicia com 48 células
 
-//ResetButton
-resetBtn.addEventListener("click", () => {
-    let valor = parseInt(gridInput.value);
-    
-    // VALIDAÇÃO REAL - NOVO
-    if (isNaN(valor)) valor = 16; // se não for número
-    valor = Math.max(16, Math.min(80, valor)); // força entre 16-80
-    
-    gridInput.value = valor; // atualiza o input
-    criarGrid(valor);
-});
+// Inicializa a exibição
+updateColorHistory();

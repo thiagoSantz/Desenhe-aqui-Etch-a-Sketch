@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap");
 
-:root {
-  --cor-pintura: rgb(157, 157, 162);
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -42,13 +38,15 @@ body {
   gap: 10px;
 }
 
-#gridSizeInput {
-  padding: 8px 12px;
-  border: 2px solid #7b5ff9;
-  background-color: rgb(200, 197, 197);
-  border-radius: 5px;
-  font-size: 16px;
-  width: 40px;
+.preset-slider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+#gridPreset {
+  width: 100px;
 }
 
 #resetBtn {
@@ -84,23 +82,129 @@ body {
   user-select: none;
 }
 
-.cell:hover {
-  background-color: var(--cor-pintura);
+.tela {
+  display: flex;
+}
+
+.color-controls {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
+}
+
+.caixa-colorPicker{
+  padding-bottom: 20px;
+}
+
+#colorPicker {
+  width: 50px;
+  height: 40px;
+  border: 2px solid #7b5ff9;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.recent-colors {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.color-history-item {
+  /* Mudei a classe */
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.color-history-item:hover {
+  transform: scale(1.2);
 }
 
 /* Para mobile */
 @media (max-width: 768px) {
-  #container {
-    width: 80vw;
-    height: 70vh;
-    
-    max-width: 700px;
-    max-height: 600px;
+  .contTitulo {
+    flex-direction: row; /* ← MUDE: força quebra vertical */
+    gap: 30px;
+    padding: 2px 0px;
+    text-align: center;
+  }
+
+  .titulo {
+    padding: 5px 0px;
   }
 
   .controls {
     flex-direction: column; /* botão embaixo do input */
     align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .tela {
+    flex-direction: column; /* empilha verticalmente */
+    justify-content: center;
+    align-items: center;
+  }
+
+  #container {
+    width: 80vw;
+    height: 70vh;
+    max-width: 700px;
+    max-height: 600px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .color-controls {
+    order: -1; /* ← coloca as cores ACIMA do grid */
+    padding: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding-top: 5px;
+  }
+
+  .caixa-colorPicker {
+    order: +1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 15px;
+  }
+
+  .recent-colors {
+    display: flex;
+    flex-direction: row; /* ← lado a lado */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* quebra linha se necessário */
+    width: auto;
+    flex: 1;
+    padding-left: 5px;
+  }
+
+  .color-history-container {
+    display: flex; /* ← container dos itens em linha */
+    gap: 1px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .color-history-item {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0; /* não deixa encolher */
   }
 }
 
