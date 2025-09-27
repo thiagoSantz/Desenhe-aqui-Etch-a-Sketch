@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Indie+Flower&family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
 
 body {
   display: flex;
@@ -24,7 +24,7 @@ body {
 }
 
 .titulo {
-  font-family: "Fleur De Leah", cursive;
+  font-family: "Indie Flower";
   font-size: 40px;
   font-weight: 400;
   color: #b6b2c4;
