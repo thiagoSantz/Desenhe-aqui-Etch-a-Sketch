@@ -53,8 +53,6 @@ function paintCell(cell) {
 
 // Adiciona cor ao histórico (COMPORTAMENTO CORRETO)
 function addToHistory(newColor) {
-    console.log("📥 Adicionando cor:", newColor);
-    console.log("📊 Histórico ANTES:", colorHistory);
     
     colorHistory = colorHistory.filter(color => color !== newColor);
     colorHistory.unshift(newColor);
@@ -63,7 +61,6 @@ function addToHistory(newColor) {
         colorHistory = colorHistory.slice(0, 8);
     }
     
-    console.log("📤 Histórico DEPOIS:", colorHistory);
     updateColorHistory();
 }
 //#endregion
@@ -71,14 +68,11 @@ function addToHistory(newColor) {
 /*--------------------------------------------------------*/
 // Atualiza a exibição (JS CORRETO - HTML e CSS do anterior)
 function updateColorHistory() {
-    console.log("🎨 Atualizando exibição do histórico");
     const historyContainer = document.querySelector('.color-history-container');
-    console.log("📦 Container encontrado:", historyContainer);
     
     historyContainer.innerHTML = '';
     
     colorHistory.forEach((color, index) => {
-        console.log(`🟣 Criando item ${index}: ${color}`);
         const colorDiv = document.createElement('div');
         colorDiv.className = 'color-history-item';
         colorDiv.style.backgroundColor = color;
@@ -88,8 +82,6 @@ function updateColorHistory() {
         });
         historyContainer.appendChild(colorDiv);
     });
-    
-    console.log("✅ Itens criados:", historyContainer.children.length);
 }
 
 function criarGrid(gridSize) {
