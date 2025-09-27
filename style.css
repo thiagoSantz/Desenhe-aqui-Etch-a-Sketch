@@ -134,7 +134,7 @@ body {
   .contTitulo {
     flex-direction: row; /* ← MUDE: força quebra vertical */
     gap: 30px;
-    padding: 20px 0px 5px 0px;
+    padding: 10px 0px 5px 0px;
     text-align: center;
   }
 
@@ -170,7 +170,6 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-    padding-top: 5px;
   }
 
   .caixa-colorPicker {
