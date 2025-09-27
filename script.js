@@ -95,6 +95,9 @@ function updateColorHistory() {
 function criarGrid(gridSize) {
   container.innerHTML = ""; // Limpa o grid anterior
 
+  // Força recálculo do layout antes de medir
+  void container.offsetWidth; // trigger reflow
+
   // Calculos para caber as celulas
   const containerWidth = container.offsetWidth;
   const containerHeight = container.offsetHeight;
