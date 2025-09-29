@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Indie+Flower&family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fleur+De+Leah&family=Indie+Flower&family=Krona+One&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap");
 
 body {
   display: flex;
@@ -14,6 +14,8 @@ body {
   /*overflow: hidden;*/
 }
 
+/*------------------------------------------------*/
+
 .contTitulo {
   display: flex;
   align-items: center;
@@ -24,18 +26,34 @@ body {
 }
 
 .titulo {
+  display: flex;
   font-family: "Indie Flower";
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 400;
-  color: #b6b2c4;
-
+  color: #e5dff9;
   padding-right: 50px;
 }
+
+/*------------------------------------------------*/
 
 .controls {
   margin-bottom: 10px;
   display: flex;
   gap: 10px;
+}
+
+#resetBtn {
+  padding: 8px 16px;
+  background-color: #5b5188;
+  color: rgb(220, 217, 217);
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+#resetBtn:hover {
+  background-color: #9a89e3;
 }
 
 .preset-slider {
@@ -49,19 +67,107 @@ body {
   width: 100px;
 }
 
-#resetBtn {
-  padding: 8px 16px;
-  background-color: #5b5188;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
+/*------------------------------------------------*/
+
+.tela {
+  display: flex;
+  padding-bottom: 10px;
 }
 
-#resetBtn:hover {
-  background-color: #9a89e3;
+.color-controls {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: white;
 }
+
+.caixa-colorPicker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 25px;
+}
+
+#colorPicker {
+  width: 60px;
+  height: 55px;
+  border: 2px solid #747474;
+  background-color: #5b5188;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+#eraserBtn {
+  padding: 6px 8px;
+  background-color: #5b5188; /* normal */
+  color: #dadae2;
+  border: 2px solid transparent; /* borda invisível quando normal */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+#eraserBtn i {
+  font-size: 25px; /* ícone maior */
+}
+
+#eraserBtn.active {
+  background-color: #9d9da2; /* cor diferente */
+  border: 2px solid #7b5ff9; /* borda colorida quando ativo */
+  transform: scale(1.05); /* leve aumento */
+}
+
+.recent-colors {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.recent-colors span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  color: #bdbdc7;
+  background-color: #5b5188;
+  border-radius: 5px;
+}
+
+.color-history-container {
+  display: flex; /* ← container dos itens em linha */
+  flex-direction: column;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.color-history-item {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #5b5188;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.color-history-item:hover {
+  transform: scale(1.2);
+}
+
+/*------------------------------------------------*/
 
 #container {
   display: flex;
@@ -82,66 +188,34 @@ body {
   user-select: none;
 }
 
-.tela {
-  display: flex;
-  padding-bottom: 10px;
-}
-
-.color-controls {
-  margin: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: white;
-}
-
-.caixa-colorPicker{
-  padding-bottom: 20px;
-}
-
-#colorPicker {
-  width: 50px;
-  height: 40px;
-  border: 2px solid #7b5ff9;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.recent-colors {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.color-history-item {
-  /* Mudei a classe */
-  width: 30px;
-  height: 30px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.color-history-item:hover {
-  transform: scale(1.2);
-}
+/*------------------------------------------------*/
 
 /* Para mobile */
 @media (max-width: 768px) {
+
   .contTitulo {
     flex-direction: row; /* ← MUDE: força quebra vertical */
-    gap: 30px;
+    align-items: center;
+    gap: 25px;
     padding: 10px 0px 5px 0px;
     text-align: center;
+    justify-content: center;
   }
 
   .titulo {
-    padding: 5px 0px;
+    font-size: 30px;
+    transform: scale(1, 2.5); /* ← estica 50% na vertical */
+    transform-origin: center;
+    padding: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    flex: 1; /* ← ocupa espaço disponível */
+    text-align: center;
+    justify-content: center;
   }
+
+  /*------------------------------------------------*/
 
   .controls {
     flex-direction: column; /* botão embaixo do input */
@@ -149,20 +223,16 @@ body {
     flex-wrap: wrap;
   }
 
+  #gridPreset {
+    width: 55px;
+  }
+
+  /*------------------------------------------------*/
+
   .tela {
     flex-direction: column; /* empilha verticalmente */
     justify-content: center;
     align-items: center;
-  }
-
-  #container {
-    width: 82vw;
-    height: 70vh;
-    max-width: 700px;
-    max-height: 600px;
-    justify-content: center;
-    align-items: center;
-    padding-top: 5px;
   }
 
   .color-controls {
@@ -192,19 +262,32 @@ body {
     flex-wrap: wrap; /* quebra linha se necessário */
     width: auto;
     flex: 1;
-    padding-left: 5px;
+    padding-left: 0px;
   }
 
   .color-history-container {
     display: flex; /* ← container dos itens em linha */
-    gap: 2px;
+    flex-direction: row;
+    gap: 3px;
     flex-wrap: wrap;
     justify-content: center;
   }
 
   .color-history-item {
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
+  }
+
+  /*------------------------------------------------*/
+
+  #container {
+    width: 82vw;
+    height: 70vh;
+    max-width: 700px;
+    max-height: 600px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
   }
 }
 

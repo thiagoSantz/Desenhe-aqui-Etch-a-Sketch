@@ -6,6 +6,10 @@
     <title>Lousazinha</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="contTitulo">
@@ -30,10 +34,13 @@
       <div id="container"></div>
       <div class="color-controls">
         <div class="caixa-colorPicker">
-          <label></label>
           <input type="color" id="colorPicker" value="#9D9DA2" />
+          <button id="eraserBtn">
+            <i class="fa-solid fa-eraser"></i><span>Borracha</span>
+          </button>
         </div>
         <div class="recent-colors">
+          <span>Cores Recentes:</span>
           <div class="color-history-container"></div>
         </div>
       </div>

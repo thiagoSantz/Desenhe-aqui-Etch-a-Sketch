@@ -9,6 +9,17 @@ const gridPreset = document.getElementById("gridPreset");
 const presetValues = [16, 32, 48, 64, 80]; // valores para o gridPreset
 //lida com o colorPicker
 const colorPicker = document.getElementById("colorPicker");
+//Borracha
+const eraserBtn = document.getElementById("eraserBtn");
+let isEraserActive = false;
+
+// Evento do botão borracha
+eraserBtn.addEventListener("click", () => {
+    isEraserActive = !isEraserActive;
+    eraserBtn.classList.toggle("active", isEraserActive);
+    
+    // MANTÉM o mesmo texto/ícone, só muda o estilo
+});
 
 // Array com 8 cores primárias iniciais
 let colorHistory = [
@@ -17,9 +28,9 @@ let colorHistory = [
     '#0000FF', // azul
     '#FFFF00', // amarelo
     '#FF00FF', // magenta
-    '#00FFFF', // ciano
-    '#FFA500', // laranja
-    '#9D9DA2'  // cinza (cor padrão)
+    //'#00FFFF', // ciano
+    //'#FFA500', // laranja
+    //'#9D9DA2'  // cinza (cor padrão)
 ]
 
 // Atualiza a palette quando cor é escolhida
@@ -48,7 +59,11 @@ resetBtn.addEventListener("click", () => {
 
 // FUNÇÃO PINTAR
 function paintCell(cell) {
-    cell.style.backgroundColor = colorPicker.value;
+    if (isEraserActive) {
+        cell.style.backgroundColor = 'transparent'; // ← borracha APAGA
+    } else {
+        cell.style.backgroundColor = colorPicker.value; // ← pincel PINTA
+    }
 }
 
 // Adiciona cor ao histórico (COMPORTAMENTO CORRETO)
@@ -57,8 +72,8 @@ function addToHistory(newColor) {
     colorHistory = colorHistory.filter(color => color !== newColor);
     colorHistory.unshift(newColor);
     
-    if (colorHistory.length > 8) {
-        colorHistory = colorHistory.slice(0, 8);
+    if (colorHistory.length > 5) {
+        colorHistory = colorHistory.slice(0, 5);
     }
     
     updateColorHistory();
