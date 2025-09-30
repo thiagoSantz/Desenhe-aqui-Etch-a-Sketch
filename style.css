@@ -77,7 +77,6 @@ body {
 }
 
 .color-controls {
-  margin: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,6 +140,7 @@ body {
 }
 
 .recent-colors {
+  transform: scale(0.8);
   display: flex;
   flex-direction: column; /* ← MUDE: coluna para quebrar linha */
   align-items: center; /* ← centraliza horizontal */
@@ -148,7 +148,7 @@ body {
   background-color: #5b5188;
   border-radius: 5px;
   border: solid 1px #858589;
-  padding: 5px; /* ← ajuste padding */
+  padding: 5px 5px 10px 5px; /* ← ajuste padding */
   width: 60%;
 }
 
@@ -156,6 +156,7 @@ body {
   color: #cdc4c4;
   font-weight: 800;
   text-align: center;
+  scale: (0.5);
 }
 
 .color-history-container {
