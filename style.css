@@ -14,7 +14,7 @@ body {
   /*overflow: hidden;*/
 }
 
-/*------------------------------------------------*/
+/*#region Titulo---------------------------------------------*/
 
 .contTitulo {
   display: flex;
@@ -35,7 +35,9 @@ body {
   padding-right: 30px;
 }
 
-/*------------------------------------------------*/
+/*#endregion------------------------------------------------*/
+
+/*#region Controles-----------------------------------------*/
 
 .controls {
   margin-bottom: 10px;
@@ -68,7 +70,9 @@ body {
   width: 100px;
 }
 
-/*------------------------------------------------*/
+/*#endregion------------------------------------------------*/
+
+/*#region CaixaCores-----------------------------------------*/
 
 .tela {
   display: flex;
@@ -139,6 +143,8 @@ body {
   display: none;
 }
 
+/*------------------------------------------------*/
+
 .recent-colors {
   transform: scale(0.8);
   display: flex;
@@ -180,7 +186,9 @@ body {
   transform: scale(1.2);
 }
 
-/*------------------------------------------------*/
+/*#endregion------------------------------------------------*/
+
+/*#region Grid-----------------------------------------*/
 
 #container {
   display: flex;
@@ -201,9 +209,18 @@ body {
   user-select: none;
 }
 
-/*------------------------------------------------*/
+/*#endregion------------------------------------------------*/
 
-/* Para mobile */
+/* SÓ MOBILE */
+@media (hover: none) and (pointer: coarse) {
+  .cell {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
+
+/*#region Mobile Vertical---------------------------*/
 @media (max-width: 768px) {
   .contTitulo {
     flex-direction: row; /* ← MUDE: força quebra vertical */
@@ -246,6 +263,8 @@ body {
     align-items: center;
   }
 
+  /*------------------------------------------------*/
+
   .color-controls {
     order: -1; /* ← coloca as cores ACIMA do grid */
     padding: 0;
@@ -269,6 +288,8 @@ body {
     height: 50px;
   }
 
+  /*------------------------------------------------*/
+
   .eraser-cursor {
     position: fixed; /* ← MUDE: fixed para touch */
     border: 2px solid #c7bbbb;
@@ -277,6 +298,8 @@ body {
     z-index: 1000;
     display: none;
   }
+
+  /*------------------------------------------------*/
 
   .recent-colors {
     display: flex;
@@ -314,11 +337,101 @@ body {
   }
 }
 
-/* SÓ MOBILE */
-@media (hover: none) and (pointer: coarse) {
-  .cell {
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
+/*#endregion------------------------------------------------*/
+
+/*#region MOBILE HORIZONTAL (landscape) */
+@media (max-width: 844px) and (max-height: 390px) {
+  body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    gap: 10px;
+    height: 100vh;
+  }
+
+  /* LINHA 1: Título + Controles */
+  .contTitulo {
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 30px;
+  }
+
+  .titulo {
+    font-size: 30px;
+    transform-origin: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-right: 0px;
+  }
+
+  .controls {
+    flex-direction: row;
+    transform: scale(0.9);
+    padding: 0;
+    gap: 10px;
+  }
+
+  /* LINHA 2: Cores + Picker/Borracha */
+  .color-controls {
+    transform: scale(0.8, 0.75);
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .caixa-colorPicker {
+    flex-direction: row;
+    gap: 10px;
+    padding-bottom: 0px;
+  }
+
+  .recent-colors {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* quebra linha se necessário */
+    padding: 5px 0px;
+    width: 250px;
+  }
+
+  .color-history-container {
+    display: flex; /* ← container dos itens em linha */
+    flex-direction: row;
+    gap: 3px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* LINHA 3: Grid (ocupa resto do espaço) */
+  .tela {
+    order: 3;
+    flex: 0 0 100%;
+    width: 100%;
+    height: calc(100% - 80px);
+    display: contents; /* ← MANTÉM contents */
+  }
+
+  #container {
+    order: 3; /* ← HERDA o order do .tela */
+    width: 90%;
+    height: 90%;
+    max-width: none;
+    max-height: none;
+    margin: 0 auto; /* ← centraliza com margem */
+    align-self: center; /* ← centraliza no flex */
   }
 }
+/*#endregion*/

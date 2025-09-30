@@ -1,15 +1,19 @@
-//#region Inicialização
-
-//lida com o o div de id container
+//lida com o id container do grid
 const container = document.getElementById("container");
-//lida com o botão de id resetBtn
-const resetBtn = document.getElementById("resetBtn");
-//lida com a variável id gridPreset (Slider)
+
+//#region gridPreset (Slider)
 const gridPreset = document.getElementById("gridPreset");
 const presetValues = [16, 32, 48, 64, 80]; // valores para o gridPreset
-//lida com o colorPicker
-const colorPicker = document.getElementById("colorPicker");
-//Borracha
+
+// Evento do slider
+gridPreset.addEventListener("input", () => {
+  const valor = presetValues[gridPreset.value];
+  criarGrid(valor);
+});
+
+//#endregion
+
+//#region Borracha
 const eraserBtn = document.getElementById("eraserBtn");
 let isEraserActive = false;
 
@@ -25,25 +29,55 @@ eraserBtn.addEventListener("click", () => {
   eraserCursor.style.display = isEraserActive ? "block" : "none";
 });
 
-// Mostra/oculta e move o cursor
-document.addEventListener("mousemove", (e) => {
-  if (isEraserActive) {
-    eraserCursor.style.display = "block";
-    eraserCursor.style.width = "15px";
-    eraserCursor.style.height = "15px";
-    eraserCursor.style.left = e.pageX - 7 + "px";
-    eraserCursor.style.top = e.pageY - 7 + "px";
-  } else {
-    eraserCursor.style.display = "none";
-  }
-});
+//#endregion Borracha
+
+//#region Range da Borracha
+
+// Tamanho fixo da área da borracha (em células)
+const eraserAreaSize = 2; // apaga 2x2 células
+
+let mousePressionado = false;
+//lida com os eventos de mousepressionado e mouse solto
+document.addEventListener("mousedown", () => (mousePressionado = true));
+document.addEventListener("mouseup", () => (mousePressionado = false));
 
 // Esconde quando mouse sai da janela
 document.addEventListener("mouseleave", () => {
   eraserCursor.style.display = "none";
 });
 
-// Array com 8 cores primárias iniciais
+// Mostra/oculta quando move o cursor
+// No mousemove, atualize o tamanho do cursor:
+document.addEventListener("mousemove", (e) => {
+  if (isEraserActive) {
+    eraserCursor.style.display = "block";
+    const cellSize = container.offsetWidth / presetValues[gridPreset.value];
+    const visualSize = (eraserAreaSize * 2 + 1) * cellSize;
+    eraserCursor.style.width = visualSize + "px";
+    eraserCursor.style.height = visualSize + "px";
+    eraserCursor.style.left = e.pageX - visualSize / 2 + "px";
+    eraserCursor.style.top = e.pageY - visualSize / 2 + "px";
+  } else {
+    eraserCursor.style.display = "none";
+  }
+});
+//#endregion
+
+//#region Botão de Reset
+const resetBtn = document.getElementById("resetBtn");
+
+// Evento do Botão de reinicio
+resetBtn.addEventListener("click", () => {
+  // Recria grid com o valor atual do slider
+  const valorAtual = presetValues[gridPreset.value];
+  criarGrid(valorAtual);
+});
+//#endregion
+
+//#region colorPicker (Escolha de cores)
+const colorPicker = document.getElementById("colorPicker");
+
+// Array com cores primárias iniciais para recente
 let colorHistory = [
   "#FF0000", // vermelho
   "#00FF00", // verde
@@ -59,36 +93,39 @@ let colorHistory = [
 colorPicker.addEventListener("change", () => {
   addToHistory(colorPicker.value);
 });
+//#endregion
 
-// Evento do slider
-gridPreset.addEventListener("input", () => {
-  const valor = presetValues[gridPreset.value];
-  criarGrid(valor);
-});
+//#region Funções
 
-// Eventos de mouse
-let mousePressionado = false;
-//lida com os eventos de mousepressionado e mouse solto
-document.addEventListener("mousedown", () => (mousePressionado = true));
-document.addEventListener("mouseup", () => (mousePressionado = false));
-
-// Evento do Botão de reinicio
-resetBtn.addEventListener("click", () => {
-  // Recria grid com o valor atual do slider
-  const valorAtual = presetValues[gridPreset.value];
-  criarGrid(valorAtual);
-});
-
-// FUNÇÃO PINTAR
-function paintCell(cell) {
+// Pinta as celula do Grid container (Borracha,colorPicker)
+function paintCell(targetCell) {
   if (isEraserActive) {
-    cell.style.backgroundColor = "transparent"; // ← borracha APAGA
+    // Borracha - apaga área ao redor
+    const cells = document.querySelectorAll(".cell");
+    const index = Array.from(cells).indexOf(targetCell);
+    const gridSize = presetValues[gridPreset.value];
+
+    // Calcula posição da célula alvo
+    const row = Math.floor(index / gridSize);
+    const col = index % gridSize;
+
+    // Apaga células na área ao redor
+    for (let r = row - eraserAreaSize; r <= row + eraserAreaSize; r++) {
+      for (let c = col - eraserAreaSize; c <= col + eraserAreaSize; c++) {
+        if (r >= 0 && r < gridSize && c >= 0 && c < gridSize) {
+          const cellIndex = r * gridSize + c;
+          if (cells[cellIndex]) {
+            cells[cellIndex].style.backgroundColor = "transparent";
+          }
+        }
+      }
+    }
   } else {
-    cell.style.backgroundColor = colorPicker.value; // ← pincel PINTA
+    // Pincel normal - pinta só a célula
+    targetCell.style.backgroundColor = colorPicker.value;
   }
 }
-
-// Adiciona cor ao histórico (COMPORTAMENTO CORRETO)
+/*--------------------------------------------------------*/
 function addToHistory(newColor) {
   colorHistory = colorHistory.filter((color) => color !== newColor);
   colorHistory.unshift(newColor);
@@ -96,13 +133,9 @@ function addToHistory(newColor) {
   if (colorHistory.length > 5) {
     colorHistory = colorHistory.slice(0, 5);
   }
-
   updateColorHistory();
 }
-//#endregion
-
 /*--------------------------------------------------------*/
-// Atualiza a exibição (JS CORRETO - HTML e CSS do anterior)
 function updateColorHistory() {
   const historyContainer = document.querySelector(".color-history-container");
 
@@ -119,8 +152,9 @@ function updateColorHistory() {
     historyContainer.appendChild(colorDiv);
   });
 }
-
+/*--------------------------------------------------------*/
 function criarGrid(gridSize) {
+  /*------------------------------------------------------*/
   container.innerHTML = ""; // Limpa o grid anterior
 
   // Força recálculo do layout antes de medir
@@ -136,7 +170,6 @@ function criarGrid(gridSize) {
   // Calcula quantas linhas cabem realmente no container
   // Calcula com margem de erro para bordas
   const linhasQueCabem = Math.floor((containerHeight - 2) / cellHeight);
-
   /*------------------------------------------------------*/
 
   // Loop para criar o grid
@@ -155,56 +188,66 @@ function criarGrid(gridSize) {
 
     container.appendChild(cell);
   }
-
-  // Evento de Touch start
-  container.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-
-    if (isEraserActive) {
-      const touch = e.touches[0];
-      eraserCursor.style.display = "block";
-      eraserCursor.style.width = "25px"; // maior para touch
-      eraserCursor.style.height = "25px";
-      eraserCursor.style.left = touch.clientX - 12 + "px";
-      eraserCursor.style.top = touch.clientY - 12 + "px";
-    }
-
-    const touch = e.touches[0];
-    const elemento = document.elementFromPoint(touch.clientX, touch.clientY);
-    const cell = elemento?.closest(".cell");
-
-    if (cell) {
-      paintCell(cell);
-    }
-  });
-
-  // Evento de Touch pressionado
-  container.addEventListener("touchmove", (e) => {
-    e.preventDefault();
-
-    if (isEraserActive) {
-      const touch = e.touches[0];
-      eraserCursor.style.left = touch.clientX - 12 + "px";
-      eraserCursor.style.top = touch.clientY - 12 + "px";
-    }
-
-    const touch = e.touches[0];
-    const elemento = document.elementFromPoint(touch.clientX, touch.clientY);
-    const cell = elemento?.closest(".cell");
-
-    if (cell) {
-      paintCell(cell);
-    }
-  });
-
-  container.addEventListener("touchend", () => {
-    eraserCursor.style.display = "none"; // esconde quando solta
-  });
+  /*------------------------------------------------------*/
 }
-
 /*--------------------------------------------------------*/
 
-criarGrid(presetValues[2]); // Inicia com 48 células
+//#endregion
 
-// Inicializa a exibição
+//#region Eventos Touch
+// Evento de Touch start
+container.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+
+  if (isEraserActive) {
+    const touch = e.touches[0];
+    eraserCursor.style.display = "block";
+    const cellSize = container.offsetWidth / presetValues[gridPreset.value];
+    const visualSize = (eraserAreaSize * 2 + 1) * cellSize;
+    eraserCursor.style.width = visualSize + "px";
+    eraserCursor.style.height = visualSize + "px";
+    eraserCursor.style.left = touch.clientX - visualSize / 2 + "px";
+    eraserCursor.style.top = touch.clientY - visualSize / 2 + "px";
+  }
+
+  const touch = e.touches[0];
+  const elemento = document.elementFromPoint(touch.clientX, touch.clientY);
+  const cell = elemento?.closest(".cell");
+
+  if (cell) {
+    paintCell(cell);
+  }
+});
+/*------------------------------------------------------*/
+// Evento de Touch pressionado
+container.addEventListener("touchmove", (e) => {
+  e.preventDefault();
+
+  if (isEraserActive) {
+    const touch = e.touches[0];
+    const cellSize = container.offsetWidth / presetValues[gridPreset.value];
+    const visualSize = (eraserAreaSize * 2 + 1) * cellSize;
+    eraserCursor.style.left = touch.clientX - visualSize / 2 + "px";
+    eraserCursor.style.top = touch.clientY - visualSize / 2 + "px";
+  }
+
+  const touch = e.touches[0];
+  const elemento = document.elementFromPoint(touch.clientX, touch.clientY);
+  const cell = elemento?.closest(".cell");
+
+  if (cell) {
+    paintCell(cell);
+  }
+});
+/*------------------------------------------------------*/
+// Fim do touch
+container.addEventListener("touchend", () => {
+  eraserCursor.style.display = "none"; // esconde quando solta
+});
+//#endregion
+
+//CHAMADAS
+criarGrid(presetValues[2]); // Inicia na posição do meio do slider do grid
+
+//Inicializa a exibição da palete de cores
 updateColorHistory();
