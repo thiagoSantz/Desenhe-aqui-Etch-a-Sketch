@@ -8,8 +8,8 @@ body {
   justify-content: center;
   background-color: rgb(41, 41, 47);
   margin: 0;
-  padding: 0;
   min-height: 100vh;
+  padding: 10px 0px 10px 0px;
   /*overflow: hidden;*/
 }
 /*---------------------------------------------*/
