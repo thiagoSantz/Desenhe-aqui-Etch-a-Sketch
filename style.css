@@ -64,6 +64,11 @@ body {
   background-color: #9a89e3;
 }
 
+#resetBtn:active {
+    transform: scale(0.95); /* ← efeito de pressionar */
+    background-color: #7b5ff9; /* ← cor diferente ao pressionar */
+}
+
 .preset-slider {
   display: flex;
   align-items: center;
@@ -124,7 +129,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s;
+  transition: all 0.5s;
+
+  min-width: 60px; /* ← largura mínima fixa */
+  max-width: 80px; /* ← largura máxima fixa */
+  overflow: hidden;
 }
 
 #eraserBtn i {
@@ -132,7 +141,7 @@ body {
 }
 
 #eraserBtn.active {
-  background-color: #9d9da2;
+  background-color: #ac454596;
   border: 2px solid #7b5ff9;
   transform: scale(1.05);
 }

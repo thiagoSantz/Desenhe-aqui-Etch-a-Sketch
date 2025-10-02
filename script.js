@@ -27,6 +27,15 @@ eraserBtn.addEventListener("click", () => {
   isEraserActive = !isEraserActive;
   eraserBtn.classList.toggle("active", isEraserActive);
   eraserCursor.style.display = isEraserActive ? "block" : "none";
+
+  //(indicação visual):
+  if (isEraserActive) {
+    eraserBtn.innerHTML =
+      '<i class="fa-solid fa-eraser"></i><span>Apagar Ligado</span>';
+  } else {
+    eraserBtn.innerHTML =
+      '<i class="fa-solid fa-eraser"></i><span>Apagar Desligado</span>';
+  }
 });
 
 //#endregion Borracha
@@ -63,7 +72,6 @@ document.addEventListener("mousemove", (e) => {
     // eraserCursor.style.top = e.pageY - offset + "px";
     eraserCursor.style.left = e.clientX - offset + "px";
     eraserCursor.style.top = e.clientY - offset + "px";
-
   } else {
     eraserCursor.style.display = "none";
   }
@@ -81,19 +89,42 @@ resetBtn.addEventListener("click", () => {
 });
 //#endregion
 
+//#region Detector de Orientação
+function recriarGridNaMudanca() {
+    const valorAtual = presetValues[gridPreset.value];
+    criarGrid(valorAtual);
+}
+
+// Detecta quando a tela vira (mobile)
+window.addEventListener("orientationchange", recriarGridNaMudanca);
+
+// Detecta redimensionamento (desktop/mobile)
+window.addEventListener("resize", recriarGridNaMudanca);
+
+// Opcional: Debounce para não chamar muitas vezes
+
+let resizeTimeout;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(recriarGridNaMudanca, 250);
+});
+
+//#endregion
+
 //#region colorPicker (Escolha de cores)
 const colorPicker = document.getElementById("colorPicker");
 
 // Array com cores primárias iniciais para recente
 let colorHistory = [
+  "#9D9DA2",  // cinza (cor padrão)
   "#FF0000", // vermelho
+  "#FFFF00", // amarelo
   "#00FF00", // verde
   "#0000FF", // azul
-  "#FFFF00", // amarelo
-  "#FF00FF", // magenta
+  //"#FF00FF", // magenta
   //'#00FFFF', // ciano
   //'#FFA500', // laranja
-  //'#9D9DA2'  // cinza (cor padrão)
+  
 ];
 
 // Atualiza a palette quando cor é escolhida
