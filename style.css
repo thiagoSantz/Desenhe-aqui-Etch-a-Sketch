@@ -111,6 +111,7 @@ body {
 }
 
 #eraserBtn {
+  order: -1;
   padding: 6px 8px;
   background-color: #5b5188;
   color: #dadae2;
