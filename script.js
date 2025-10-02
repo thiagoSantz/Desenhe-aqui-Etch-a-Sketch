@@ -91,8 +91,17 @@ resetBtn.addEventListener("click", () => {
 
 //#region Detector de Orientação
 function recriarGridNaMudanca() {
-    const valorAtual = presetValues[gridPreset.value];
-    criarGrid(valorAtual);
+  const valorAtual = presetValues[gridPreset.value];
+  criarGrid(valorAtual);
+}
+
+// ✅ DESLIGA borracha se estiver ativa
+if (isEraserActive) {
+  isEraserActive = false;
+  eraserBtn.classList.remove("active");
+  eraserCursor.style.display = "none";
+  eraserBtn.innerHTML =
+    '<i class="fa-solid fa-eraser"></i><span>Borracha</span>';
 }
 
 // Detecta quando a tela vira (mobile)
@@ -105,8 +114,8 @@ window.addEventListener("resize", recriarGridNaMudanca);
 
 let resizeTimeout;
 window.addEventListener("resize", () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(recriarGridNaMudanca, 250);
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(recriarGridNaMudanca, 250);
 });
 
 //#endregion
@@ -116,7 +125,7 @@ const colorPicker = document.getElementById("colorPicker");
 
 // Array com cores primárias iniciais para recente
 let colorHistory = [
-  "#9D9DA2",  // cinza (cor padrão)
+  "#9D9DA2", // cinza (cor padrão)
   "#FF0000", // vermelho
   "#FFFF00", // amarelo
   "#00FF00", // verde
@@ -124,7 +133,6 @@ let colorHistory = [
   //"#FF00FF", // magenta
   //'#00FFFF', // ciano
   //'#FFA500', // laranja
-  
 ];
 
 // Atualiza a palette quando cor é escolhida
