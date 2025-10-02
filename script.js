@@ -55,8 +55,12 @@ document.addEventListener("mousemove", (e) => {
     const visualSize = (eraserAreaSize * 2 + 1) * cellSize;
     eraserCursor.style.width = visualSize + "px";
     eraserCursor.style.height = visualSize + "px";
-    eraserCursor.style.left = e.pageX - visualSize / 2 + "px";
-    eraserCursor.style.top = e.pageY - visualSize / 2 + "px";
+    // eraserCursor.style.left = e.pageX - visualSize / 2 + "px";
+    // eraserCursor.style.top = e.pageY - visualSize / 2 + "px";
+
+    const offset = visualSize / 2; // ou use 15 para fixo
+    eraserCursor.style.left = e.pageX - offset + "px";
+    eraserCursor.style.top = e.pageY - offset + "px";
   } else {
     eraserCursor.style.display = "none";
   }
@@ -206,8 +210,11 @@ container.addEventListener("touchstart", (e) => {
     const visualSize = (eraserAreaSize * 2 + 1) * cellSize;
     eraserCursor.style.width = visualSize + "px";
     eraserCursor.style.height = visualSize + "px";
-    eraserCursor.style.left = touch.clientX - visualSize / 2 + "px";
-    eraserCursor.style.top = touch.clientY - visualSize / 2 + "px";
+    // eraserCursor.style.left = touch.clientX - visualSize / 2 + "px";
+    // eraserCursor.style.top = touch.clientY - visualSize / 2 + "px";
+    const offset = visualSize / 2;
+    eraserCursor.style.left = touch.clientX - offset + "px";
+    eraserCursor.style.top = touch.clientY - offset + "px";
   }
 
   const touch = e.touches[0];
@@ -227,8 +234,11 @@ container.addEventListener("touchmove", (e) => {
     const touch = e.touches[0];
     const cellSize = container.offsetWidth / presetValues[gridPreset.value];
     const visualSize = (eraserAreaSize * 2 + 1) * cellSize;
-    eraserCursor.style.left = touch.clientX - visualSize / 2 + "px";
-    eraserCursor.style.top = touch.clientY - visualSize / 2 + "px";
+    // eraserCursor.style.left = touch.clientX - visualSize / 2 + "px";
+    // eraserCursor.style.top = touch.clientY - visualSize / 2 + "px";
+    const offset = visualSize / 2;
+    eraserCursor.style.left = touch.clientX - offset + "px";
+    eraserCursor.style.top = touch.clientY - offset + "px";
   }
 
   const touch = e.touches[0];
