@@ -91,33 +91,26 @@ resetBtn.addEventListener("click", () => {
 
 //#region Detector de Orientação
 function recriarGridNaMudanca() {
+  // ✅ DESLIGA borracha se estiver ativa (DENTRO da função)
+  if (isEraserActive) {
+    isEraserActive = false;
+    eraserBtn.classList.remove("active");
+    eraserCursor.style.display = "none";
+    eraserBtn.innerHTML = '<i class="fa-solid fa-eraser"></i><span>Borracha</span>';
+  }
+  
   const valorAtual = presetValues[gridPreset.value];
   criarGrid(valorAtual);
-}
-
-// ✅ DESLIGA borracha se estiver ativa
-if (isEraserActive) {
-  isEraserActive = false;
-  eraserBtn.classList.remove("active");
-  eraserCursor.style.display = "none";
-  eraserBtn.innerHTML =
-    '<i class="fa-solid fa-eraser"></i><span>Borracha</span>';
 }
 
 // Detecta quando a tela vira (mobile)
 window.addEventListener("orientationchange", recriarGridNaMudanca);
 
 // Detecta redimensionamento (desktop/mobile)
-window.addEventListener("resize", recriarGridNaMudanca);
-
-// Opcional: Debounce para não chamar muitas vezes
-
-let resizeTimeout;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(recriarGridNaMudanca, 250);
 });
-
 //#endregion
 
 //#region colorPicker (Escolha de cores)
