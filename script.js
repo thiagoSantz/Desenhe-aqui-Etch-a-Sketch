@@ -59,8 +59,11 @@ document.addEventListener("mousemove", (e) => {
     // eraserCursor.style.top = e.pageY - visualSize / 2 + "px";
 
     const offset = visualSize / 2; // ou use 15 para fixo
-    eraserCursor.style.left = e.pageX - offset + "px";
-    eraserCursor.style.top = e.pageY - offset + "px";
+    // eraserCursor.style.left = e.pageX - offset + "px";
+    // eraserCursor.style.top = e.pageY - offset + "px";
+    eraserCursor.style.left = e.clientX - offset + "px";
+    eraserCursor.style.top = e.clientY - offset + "px";
+
   } else {
     eraserCursor.style.display = "none";
   }
