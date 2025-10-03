@@ -90,8 +90,11 @@ resetBtn.addEventListener("click", () => {
 //#endregion
 
 //#region Detector de Orientação
+let resizeTimeout; // ← DECLARAR a variável aqui
+
 function recriarGridNaMudanca() {
-  // ✅ DESLIGA borracha se estiver ativa (DENTRO da função)
+  
+  // ✅ DESLIGA borracha se estiver ativa
   if (isEraserActive) {
     isEraserActive = false;
     eraserBtn.classList.remove("active");
