@@ -46,11 +46,13 @@ Online
 - *Deploy:* GitHub Pages
 
 ## 📁 Estrutura do Projeto
+```
 lousazinha/
 ├── index.html          # Estrutura principal
 ├── style.css           # Estilos e responsividade
 ├── script.js           # Lógica da aplicação
 └── README.md           # Este arquivo
+```
 
 ## 🎯 Controles
 Ação	    Mouse	            Touch
@@ -92,26 +94,13 @@ Tamanho	Uso Recomendado
 64x64	Trabalhos  mais complexos
 80x80	Ilustrações mais detalhadas
 
-## 🤝 Contribuindo
-Contribuições são bem-vindas! Sinta-se à vontade para:
-
-- Fork o projeto
-
-- Criar uma branch para sua feature (git checkout -b feature/AmazingFeature)
-
-- Commit suas mudanças (git commit -m 'Add some AmazingFeature')
-
-- Push para a branch (git push origin feature/AmazingFeature)
-
-- Abrir um Pull Request
-
 ## 📄 Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
 
 ## 👨‍💻 Autor
 Thiago Santana
 
-GitHub: @thiagoSantana
+GitHub: @thiagoSantz
 
 Projeto: Lousazinha
 
