@@ -1,9 +1,9 @@
-**🎨 Lousazinha - App de Desenho Online
+**🎨 Lousazinha - App de Desenho Online**
 
 Uma aplicação web responsiva para desenho e pintura com grid personalizável, perfeita para esboços rápidos e projetos criativos.
 
-✨ Funcionalidades
-🎯 Controles Principais
+**✨ Funcionalidades**
+*🎯 Controles Principais*
 Grid Personalizável: 16x16 até 80x80 células
 
 Modo Pincel: Pintura com cores personalizáveis
@@ -14,14 +14,14 @@ Cores Recentes: Histórico das últimas cores usadas
 
 Reset Rápido: Recria o grid mantendo configurações
 
-📱 Experiência Responsiva
+**📱 Experiência Responsiva**
 Desktop: Layout otimizado com controles centralizados
 
 Mobile: Interface touch-friendly para desenho com dedos
 
 Orientação: Adaptação automática vertical/horizontal
 
-🎨 Recursos Técnicos
+**🎨 Recursos Técnicos**
 Canvas Virtual: Grid flexível com células dinâmicas
 
 Eventos Híbridos: Suporte a mouse e touch simultâneo
@@ -30,9 +30,9 @@ Feedback Visual: Cursor da borracha em tempo real
 
 Persistência: Histórico de cores mantido durante a sessão
 
-🚀 Como Usar
+**🚀 Como Usar**
 Online
-Acesse: https://seuusuario.github.io/lousazinha
+Acesse: https://thiagosantz.github.io/Desenhe-aqui-Etch-a-Sketch/
 
 Escolha o tamanho do grid pelo slider
 
@@ -40,7 +40,7 @@ Selecione uma cor ou use a borracha
 
 Comece a desenhar!
 
-🛠️ Tecnologias
+**🛠️ Tecnologias**
 Frontend: HTML5, CSS3, JavaScript (ES6+)
 
 Layout: Flexbox, CSS Grid, Media Queries
@@ -51,43 +51,43 @@ Fontes: Google Fonts (Indie Flower)
 
 Deploy: GitHub Pages
 
-📁 Estrutura do Projeto
+**📁 Estrutura do Projeto**
 lousazinha/
 ├── index.html          # Estrutura principal
 ├── style.css           # Estilos e responsividade
 ├── script.js           # Lógica da aplicação
 └── README.md           # Este arquivo
 
-🎯 Controles
+**🎯 Controles**
 Ação	    Mouse	            Touch
 Pintar	    Clique + Arrastar	Toque + Deslizar
 Borracha	Botão Borracha	    Botão Borracha
 Mudar Grid	Slider	            Slider
 Nova Cor	Seletor de Cor	    Seletor de Cor
 
-🌟 Recursos em Destaque
-🎨 Sistema de Cores
+**🌟 Recursos em Destaque**
+*🎨 Sistema de Cores*
 Seletor de cores nativo do navegador
 
 Histórico das 5 cores mais recentes
 
 Preview visual das cores salvas
 
-✏️ Ferramentas de Desenho
+*✏️ Ferramentas de Desenho*
 Pincel: Pintura célula por célula
 
 Borracha Área: Apaga múltiplas células simultaneamente
 
 Cursor Visual: Indicador do tamanho da borracha
 
-📐 Grid Inteligente
+*📐 Grid Inteligente*
 Redimensionamento automático
 
 Manutenção de proporções
 
 Otimização para diferentes densidades
 
-🔧 Personalização
+*🔧 Personalização*
 O grid pode ser ajustado para diferentes necessidades:
 
 Tamanho	Uso Recomendado
@@ -97,7 +97,7 @@ Tamanho	Uso Recomendado
 64x64	Trabalhos  mais complexos
 80x80	Ilustrações mais detalhadas
 
-🤝 Contribuindo
+**🤝 Contribuindo**
 Contribuições são bem-vindas! Sinta-se à vontade para:
 
 Fork o projeto
@@ -110,22 +110,22 @@ Push para a branch (git push origin feature/AmazingFeature)
 
 Abrir um Pull Request
 
-📄 Licença
+**📄 Licença**
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
 
-👨‍💻 Autor
-Seu Nome
+**👨‍💻 Autor**
+Thiago Santana
 
-GitHub: @seuusuario
+GitHub: @thiagoSantana
 
 Projeto: Lousazinha
 
-🎉 Agradecimentos
+**🎉 Agradecimentos**
 Font Awesome pelos ícones
 
 Google Fonts pela fonte Indie Flower
 
 Comunidade de desenvolvedores por recursos e inspiração
 
-DeepSeek pela contribuição na resolução de problemas.
+DeepSeek pela contribuição na resolução de problemas
 
