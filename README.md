@@ -35,15 +35,15 @@ Online
 4. Comece a desenhar!
 
 ### 🛠️ Tecnologias
-*Frontend:* HTML5, CSS3, JavaScript (ES6+)
+- *Frontend:* HTML5, CSS3, JavaScript (ES6+)
 
-*Layout:* Flexbox, CSS Grid, Media Queries
+- *Layout:* Flexbox, CSS Grid, Media Queries
 
-*Ícones:* Font Awesome 6.0
+- *Ícones:* Font Awesome 6.0
 
-*Fontes:* Google Fonts (Indie Flower)
+- *Fontes:* Google Fonts (Indie Flower)
 
-*Deploy:* GitHub Pages
+- *Deploy:* GitHub Pages
 
 ## 📁 Estrutura do Projeto
 lousazinha/
@@ -62,25 +62,25 @@ Nova Cor	Seletor de Cor	    Seletor de Cor
 ## 🌟 Recursos em Destaque
 
 ### 🎨 Sistema de Cores
-Seletor de cores nativo do navegador
+- Seletor de cores nativo do navegador
 
-Histórico das 5 cores mais recentes
+- Histórico das 5 cores mais recentes
 
-Preview visual das cores salvas
+- Preview visual das cores salvas
 
 ### ✏️ Ferramentas de Desenho
-*Pincel:* Pintura célula por célula
+- *Pincel:* Pintura célula por célula
 
-*Borracha Área:* Apaga múltiplas células simultaneamente
+- *Borracha Área:* Apaga múltiplas células simultaneamente
 
-*Cursor Visual:* Indicador do tamanho da borracha
+- *Cursor Visual:* Indicador do tamanho da borracha
 
 ### 📐 Grid Inteligente
-Redimensionamento automático
+- Redimensionamento automático
 
-Manutenção de proporções
+- Manutenção de proporções
 
-Otimização para diferentes densidades
+- Otimização para diferentes densidades
 
 ### 🔧 Personalização
 O grid pode ser ajustado para diferentes necessidades:
@@ -95,15 +95,15 @@ Tamanho	Uso Recomendado
 ## 🤝 Contribuindo
 Contribuições são bem-vindas! Sinta-se à vontade para:
 
-Fork o projeto
+- Fork o projeto
 
-Criar uma branch para sua feature (git checkout -b feature/AmazingFeature)
+- Criar uma branch para sua feature (git checkout -b feature/AmazingFeature)
 
-Commit suas mudanças (git commit -m 'Add some AmazingFeature')
+- Commit suas mudanças (git commit -m 'Add some AmazingFeature')
 
-Push para a branch (git push origin feature/AmazingFeature)
+- Push para a branch (git push origin feature/AmazingFeature)
 
-Abrir um Pull Request
+- Abrir um Pull Request
 
 ## 📄 Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
@@ -116,11 +116,11 @@ GitHub: @thiagoSantana
 Projeto: Lousazinha
 
 ## 🎉 Agradecimentos
-Font Awesome pelos ícones
+- Font Awesome pelos ícones
 
-Google Fonts pela fonte Indie Flower
+- Google Fonts pela fonte Indie Flower
 
-Comunidade de desenvolvedores por recursos e inspiração
+- Comunidade de desenvolvedores por recursos e inspiração
 
-DeepSeek pela contribuição na resolução de problemas
+- DeepSeek pela contribuição na resolução de problemas
 
