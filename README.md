@@ -55,11 +55,16 @@ lousazinha/
 ```
 
 ## 🎯 Controles
-Ação	    Mouse	            Touch
-Pintar	    Clique + Arrastar	Toque + Deslizar
-Borracha	Botão Borracha	    Botão Borracha
-Mudar Grid	Slider	            Slider
-Nova Cor	Seletor de Cor	    Seletor de Cor
+
+| Ação | Mouse | Touch |
+|------|-------|-------|
+| Pintar | Clique esquerdo + arrastar | Toque + deslizar |
+| Borracha | Botão "Borracha" | Botão "Borracha" |
+| Tamanho do Grid | Slider (16-80) | Slider (16-80) |
+| Selecionar Cor | Color Picker | Color Picker |
+| Cores Recentes | Clique nos círculos | Toque nos círculos |
+| Limpar Grid | Botão "Novo Grid" | Botão "Novo Grid" |
+| Modo Borracha ON/OFF | Clique no botão | Toque no botão |
 
 ## 🌟 Recursos em Destaque
 
@@ -87,12 +92,13 @@ Nova Cor	Seletor de Cor	    Seletor de Cor
 ### 🔧 Personalização
 O grid pode ser ajustado para diferentes necessidades:
 
-Tamanho	Uso Recomendado
-16x16	Esboços rápidos
-32x32	Desenhos médios
-48x48	Detalhes mais finos
-64x64	Trabalhos  mais complexos
-80x80	Ilustrações mais detalhadas
+| Tamanho | Células | Uso Recomendado 
+|---------|---------|-----------------
+| 16x16 | 256px | Esboços rápidos 
+| 32x32 | 1.024px | Desenhos médios 
+| 48x48 | 2.304px | Detalhes mais finos 
+| 64x64 | 4.096px | Trabalhos mais complexos 
+| 80x80 | 6.400px | Ilustrações mais detalhadas 
 
 ## 📄 Licença
 Este projeto está sob a licença MIT. Veja o arquivo LICENSE para detalhes.
