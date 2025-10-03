@@ -1,4 +1,4 @@
-🎨 Lousazinha - App de Desenho Online
+**🎨 Lousazinha - App de Desenho Online
 
 Uma aplicação web responsiva para desenho e pintura com grid personalizável, perfeita para esboços rápidos e projetos criativos.
 
